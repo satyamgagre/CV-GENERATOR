@@ -1,6 +1,6 @@
 Step 1: Navigate to the Project Folder
 Open Command Prompt and run:
-cd "C:\Users\satyam gagre\OneDrive\Desktop\PDF\CVGENERATOR"
+cd "C:\Desktop\PDF\CVGENERATOR"
 
 
 Step 2: Activate the Virtual Environment
