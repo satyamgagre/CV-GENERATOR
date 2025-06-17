@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCEPT</title>
 
     <link 
         rel="stylesheet" 
@@ -10,9 +11,59 @@
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" 
         crossorigin="anonymous">
 
-    <title>ACCEPT</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #343a40;
+        }
+
+        form {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        hr {
+            margin-top: 20px;
+            border-top: 1px solid #6c757d;
+        }
+    </style>
 </head>
 <body>
+
+    <div class="container-fluid">
+        <div class="row mt-3 justify-content-center">
+            <div class="col-auto">
+                <a href="{% url 'list' %}" class="btn btn-outline-primary">Resume List</a>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h1>Enter Resume Details</h1>
+
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-md-7">
@@ -20,54 +71,55 @@
                     {% csrf_token %}
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
+                        <label>Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Satya Gagre">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
+                        <label>Email</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="satyagagre@gmail.com">
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Phone</label>
+                        <label>Phone</label>
                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="7020903497">
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">About you</label>
-                        <textarea type="text" class="form-control" id="summary" name="summary" placeholder="Hi im a Computer Engineer. "></textarea>
+                        <label>About You</label>
+                        <textarea class="form-control" id="summary" name="summary" placeholder="Hi I'm a Computer Engineer." rows="3"></textarea>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Degree</label>
+                        <label>Degree</label>
                         <input type="text" class="form-control" id="degree" name="degree" placeholder="BE in Computer Engineering">
                     </div>
-            
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">School</label>
+                        <label>School</label>
                         <input type="text" class="form-control" id="school" name="school" placeholder="Modern High School Shivajinagar Pune 5">
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">University</label>
+                        <label>University</label>
                         <input type="text" class="form-control" id="university" name="university" placeholder="Ajeenkya Dy Patil School of Engineering">
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Previous Work</label>
-                        <textarea type="text" class="form-control" id="previous_work" name="previous_work" placeholder="Web Developer"></textarea>
+                        <label>Previous Work</label>
+                        <textarea class="form-control" id="previous_work" name="previous_work" placeholder="Web Developer" rows="2"></textarea>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Skills</label>
-                        <input type="text" class="form-control" id="skills" name="skills" placeholder="Html,Css,Javascript,Python,Java,etc.">
+                        <label>Skills</label>
+                        <input type="text" class="form-control" id="skills" name="skills" placeholder="HTML, CSS, JavaScript, Python, Java, etc.">
                     </div>
-            
-                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
     </div>
+
 </body>
 </html>

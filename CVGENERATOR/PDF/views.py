@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Profile
-
+import pdfkit
+from django.http import HttpResponse
+from django.template import loader
+import io
 # Create your views here.
 
 def accept(request):
@@ -16,11 +19,44 @@ def accept(request):
         previous_work = request.POST.get("previous_work","")
         skills = request.POST.get("skills","")
 
-        profile = Profile(name=name,email=email,phone=phone,summary=summary,degree=degree,school=school,university=university,previous_work=previous_work,skills=skills)
+        profile = Profile(
+                        name=name,
+                        email=email,
+                        phone=phone,
+                        summary=summary,
+                        degree=degree,
+                        school=school,
+                        university=university,
+                        previous_work=previous_work,
+                        skills=skills
+                    )
         profile.save() 
 
     return render(request, 'PDF/accept.html')  
 
 def resume(request,id):
     user_profile = Profile.objects.get(pk=id)
-    return render(request, 'pdf/resume.html',{'user_profile':user_profile})
+    template =loader.get_template('PDF/resume.html')
+    html = template.render({'user_profile':user_profile})
+    
+    options = {
+        'page-size':'Letter',
+        'encoding':'UTF-8',
+    }
+
+    # ✅ Paste this block here
+    path_to_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+    config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
+
+    # Generate PDF using the specified wkhtmltopdf path
+    pdf = pdfkit.from_string(html, False, options=options, configuration=config)
+
+    filename = "resume.pdf"  
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+
+    return response
+
+def list(request):
+    profile = Profile.objects.all()
+    return render(request,"PDF/list.html",{'profile':profile})

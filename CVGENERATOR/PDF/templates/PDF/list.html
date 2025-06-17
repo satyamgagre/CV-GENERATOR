@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+
+    <link 
+        rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+        crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #343a40;
+        }
+
+        .profile-row {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            margin-bottom: 20px;
+        }
+
+        hr.custom-hr {
+            height: 2px;
+            background-color: rgb(213, 37, 37);
+            border: none;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row mb-4">
+            <div class="col-md-12 text-center">
+                <h2>CV Database Profile List</h2>
+                <hr class="custom-hr">
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="row mb-3">
+            <div class="col-md-12 text-right">
+                <a href="{% url 'accept' %}" class="btn btn-secondary">← Back to Accept</a>
+            </div>
+        </div>
+
+        <!-- Profile List -->
+        {% for profile in profile %}
+        <div class="row profile-row align-items-center">
+            <div class="col-md-8">
+                {{ profile.name }}
+            </div>
+            <div class="col-md-4">
+                <a href="/{{ profile.id }}" class="btn btn-primary">Download</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

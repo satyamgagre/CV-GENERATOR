@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESUME</title>
+    
+    <link 
+    rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
+
 </head>
 <body>
     <h2>{{user_profile.name}}</h2>
@@ -11,11 +18,17 @@
     <p><strong>Phone:</strong>{{user_profile.phone}}</p>
     <hr>
     <br>
+
     <p><strong>About you:</strong>{{user_profile.summary}}</p>
-    <p><strong>Degree:</strong>{{user_profile.degree}}</p>
+    <hr><br>
+    <h3>Education</h3>
+    <ul>
     <p><strong>School:</strong>{{user_profile.school}}</p>
     <p><strong>University:</strong>{{user_profile.university}}</p>
+    <p><strong>Degree:</strong>{{user_profile.degree}}</p>
+    </ul>
     <p><strong>Previous Role:</strong>{{user_profile.previous_work}}</p>
     <p><strong>Skills:</strong>{{user_profile.skills}}</p>
+
 </body>
 </html>
